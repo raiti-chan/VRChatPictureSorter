@@ -1,10 +1,19 @@
-﻿using System;
+﻿using NLog;
+using System;
 using System.ComponentModel;
 using System.Windows.Forms;
 
 namespace AdvancedVRChatPictureSorter {
 	public partial class NotifycationWrapper : Component {
+
+		/// <summary>
+		/// Logger
+		/// </summary>
+		private static readonly Logger logger = LogManager.GetCurrentClassLogger();
+
+
 		public NotifycationWrapper() {
+			logger.Debug("Initialize...NotifycationWrapper");
 			this.InitializeComponent();
 
 			this.Icon.Icon = System.Drawing.SystemIcons.Application;
@@ -14,7 +23,6 @@ namespace AdvancedVRChatPictureSorter {
 
 		public NotifycationWrapper(IContainer container) {
 			container.Add(this);
-
 			this.InitializeComponent();
 		}
 
@@ -26,6 +34,7 @@ namespace AdvancedVRChatPictureSorter {
 		/// コンテキストメニューを追加
 		/// </summary>
 		public void AddMenuItem(string menuName ,EventHandler e) {
+			logger.Debug("Add Menu :{0}", menuName);
 			ToolStripMenuItem item = new ToolStripMenuItem();
 
 			this.Menu.SuspendLayout();
@@ -41,6 +50,7 @@ namespace AdvancedVRChatPictureSorter {
 		/// メニューのセパレーターを追加します。
 		/// </summary>
 		public void AddMenuSeparator() {
+			logger.Debug("Add Separator");
 			ToolStripSeparator separator = new ToolStripSeparator();
 
 			this.Menu.SuspendLayout();
