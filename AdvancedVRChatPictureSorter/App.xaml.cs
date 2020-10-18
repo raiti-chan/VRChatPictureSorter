@@ -11,5 +11,17 @@ namespace AdvancedVRChatPictureSorter {
 	/// App.xaml の相互作用ロジック
 	/// </summary>
 	public partial class App : Application {
+
+		private NotifycationWrapper notify = null;
+
+		private void StartEvent(object sender, StartupEventArgs e) {
+			this.ShutdownMode = ShutdownMode.OnExplicitShutdown;
+			this.notify = new NotifycationWrapper();
+		}
+
+		private void ExitEvent(object sender, ExitEventArgs e) {
+			this.notify.Dispose();
+		}
+
 	}
 }
