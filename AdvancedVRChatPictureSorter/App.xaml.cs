@@ -1,6 +1,7 @@
 ﻿using System.IO;
 using System.Windows;
 using NLog;
+using Raitichan.AdvancedVRChatPictureSorter.Library.Manager;
 
 namespace Raitichan.AdvancedVRChatPictureSorter.Core {
 	/// <summary>
@@ -18,6 +19,11 @@ namespace Raitichan.AdvancedVRChatPictureSorter.Core {
 		private NotifycationWrapper notify = null;
 
 		/// <summary>
+		/// プラグインマネージャー
+		/// </summary>
+		private readonly PluginManager pluginManager = new PluginManager();
+
+		/// <summary>
 		/// 初期化処理
 		/// </summary>
 		private void Initialize() {
@@ -29,6 +35,8 @@ namespace Raitichan.AdvancedVRChatPictureSorter.Core {
 				pluginRootDirectory.Create();
 			}
 			logger.Info("Plugin Root Path : {0}", pluginRootDirectory.FullName);
+
+			this.pluginManager.LoadPlugins(pluginRootDirectory);
 		}
 
 
@@ -42,6 +50,7 @@ namespace Raitichan.AdvancedVRChatPictureSorter.Core {
 
 		private void ExitEvent(object sender, ExitEventArgs e) {
 			logger.Info("Finalze.");
+			this.pluginManager.Dispose();
 			this.notify.Dispose();
 		}
 
