@@ -87,6 +87,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="ConsoleTarget.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="NotifycationWrapper.cs">
