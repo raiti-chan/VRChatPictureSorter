@@ -1,6 +1,8 @@
 ﻿using System.IO;
+using System.Linq;
 using System.Windows;
 using NLog;
+using NLog.Config;
 using Raitichan.AdvancedVRChatPictureSorter.Library.Manager;
 
 namespace Raitichan.AdvancedVRChatPictureSorter.Core {
@@ -41,6 +43,14 @@ namespace Raitichan.AdvancedVRChatPictureSorter.Core {
 
 
 		private void StartEvent(object sender, StartupEventArgs e) {
+			if (e != null && e.Args.Select(arg => arg.Equals("--debug-console")).Count() > 0) {
+				// TODO: Logコンソールの表示
+				LoggingConfiguration conf = LogManager.Configuration;
+				ConsoleTarget consoleTarget = new ConsoleTarget("consoleWrapper");
+				conf.AddRule(LogLevel.Debug, LogLevel.Fatal, consoleTarget);
+				LogManager.Configuration = conf;
+
+			}
 			logger.Info("Start application.");
 
 			this.ShutdownMode = ShutdownMode.OnExplicitShutdown;
