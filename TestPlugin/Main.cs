@@ -15,18 +15,22 @@ namespace Raitichan.AdvancedVRChatPictureSorter.Plugins.TestPlugin {
 		private static readonly Logger logger = LogManager.GetCurrentClassLogger();
 
 
-		string IPlugin.PluginName { get; } = "TestPlugin";
+		public string PluginName { get; } = "TestPlugin";
 
-		string IPlugin.PluginDesctiption { get; } = "Test!!";
+		public string PluginDesctiption { get; } = "Test!!";
 
-		Version IPlugin.PluginVersion { get; } = new Version(1, 0, 0);
+		public Version PluginVersion { get; } = new Version(1, 0, 0);
 
-		void IPlugin.Dispose() {
+		public void Dispose() {
 			logger.Info("Test Plugin Dispose");
 		}
 
-		void IPlugin.Initialize() {
+		public void Initialize() {
 			logger.Info("Test Plugin Initialize");
+		}
+
+		public void PreInitialize() {
+			logger.Info("Test Plugin PreInitialize");
 		}
 	}
 }
