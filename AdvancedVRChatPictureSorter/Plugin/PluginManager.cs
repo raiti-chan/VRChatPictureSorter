@@ -63,5 +63,16 @@ namespace AdvancedVRChatPictureSorter.Plugin {
 			this.plugins.Add(plugin.PluginName, pm);
 		}
 
+		/// <summary>
+		/// プラグインマネージャを破棄します。
+		/// </summary>
+		public void Dispose() {
+			foreach(KeyValuePair<string, Plugin> plugin in this.plugins) {
+				plugin.Value.Dispose();
+			}
+
+			this.plugins.Clear();
+		}
+
 	}
 }
