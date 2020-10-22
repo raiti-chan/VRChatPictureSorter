@@ -53,6 +53,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\AdvancedVRChatPictureSorter\AdvancedVRChatPictureSorter.csproj">
+      <Project>{40dbb8cd-cf7c-4eef-99d5-d7aeafce4067}</Project>
+      <Name>AdvancedVRChatPictureSorter</Name>
+    </ProjectReference>
     <ProjectReference Include="..\PluginLibrary\PluginLibrary.csproj">
       <Project>{0b0a1b0d-7357-4aff-94f7-bc90040c9eba}</Project>
       <Name>PluginLibrary</Name>
@@ -62,4 +66,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>move "$(TargetPath)" "$(TargetDir)plugins\$(TargetFileName)"</PostBuildEvent>
+  </PropertyGroup>
 </Project>
