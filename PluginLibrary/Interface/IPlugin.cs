@@ -18,8 +18,14 @@ namespace Raitichan.AdvancedVRChatPictureSorter.Library.Interface {
 		/// </summary>
 		Version PluginVersion { get; }
 
+
 		/// <summary>
-		/// 初期化処理
+		/// ほかのプラグインが読み込まれる前に呼ばれるイニシャライズ
+		/// </summary>
+		void PreInitialize();
+
+		/// <summary>
+		/// 全てのプラグインが読み込まれた後に呼ばれるイニシャライズ
 		/// </summary>
 		void Initialize();
 
