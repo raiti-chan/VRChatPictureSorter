@@ -48,9 +48,9 @@ namespace Raitichan.AdvancedVRChatPictureSorter.Library.Manager {
 			var types = from type in asm.GetTypes() where !(type.IsInterface || type.IsAbstract) select type;
 			foreach (Type type in types) {
 				logger.Debug("Find Type : {0}", type.FullName);
-				if (type.IsAssignableFrom(typeof(Object))) {
+				if (typeof(IPlugin).IsAssignableFrom(type)) {
 					logger.Info("Find Plugin Entrypoint {0}", type.Name);
-					//plugin = Activator.CreateInstance(type) as IPluginInterface;
+					plugin = Activator.CreateInstance(type) as IPlugin;
 					break;
 				}
 			}
