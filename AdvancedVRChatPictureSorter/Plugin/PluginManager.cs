@@ -47,6 +47,7 @@ namespace AdvancedVRChatPictureSorter.Plugin {
 
 			var types = from type in asm.GetTypes() where !(type.IsInterface || type.IsAbstract) select type;
 			foreach (Type type in types) {
+				logger.Debug("Find Type : {0}", type.FullName);
 				if (type.IsAssignableFrom(typeof(IPluginInterface))) {
 					logger.Info("Find Plugin Entrypoint {0}", type.Name);
 					plugin = Activator.CreateInstance(type) as IPluginInterface;
