@@ -3,7 +3,7 @@ using System;
 using System.ComponentModel;
 using System.Windows.Forms;
 
-namespace AdvancedVRChatPictureSorter {
+namespace Raitichan.AdvancedVRChatPictureSorter.Core {
 	public partial class NotifycationWrapper : Component {
 
 		/// <summary>

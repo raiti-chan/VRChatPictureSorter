@@ -1,4 +1,4 @@
-﻿namespace AdvancedVRChatPictureSorter {
+﻿namespace Raitichan.AdvancedVRChatPictureSorter.Core {
 	partial class NotifycationWrapper {
 		/// <summary>
 		/// 必要なデザイナー変数です。

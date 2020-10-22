@@ -6,7 +6,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{40DBB8CD-CF7C-4EEF-99D5-D7AEAFCE4067}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>AdvancedVRChatPictureSorter</RootNamespace>
+    <RootNamespace>Raitichan.AdvancedVRChatPictureSorter.Core</RootNamespace>
     <AssemblyName>AdvancedVRChatPictureSorter</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -50,7 +50,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>AdvancedVRChatPictureSorter.App</StartupObject>
+    <StartupObject>Raitichan.AdvancedVRChatPictureSorter.Core.App</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
@@ -95,9 +95,6 @@
     <Compile Include="NotifycationWrapper.Designer.cs">
       <DependentUpon>NotifycationWrapper.cs</DependentUpon>
     </Compile>
-    <Compile Include="Lib\IPluginInterface.cs" />
-    <Compile Include="Plugin\PluginManager.cs" />
-    <Compile Include="Plugin\Plugin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -144,6 +141,12 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PluginLibrary\PluginLibrary.csproj">
+      <Project>{0b0a1b0d-7357-4aff-94f7-bc90040c9eba}</Project>
+      <Name>PluginLibrary</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
