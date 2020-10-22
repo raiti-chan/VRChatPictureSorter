@@ -10,7 +10,7 @@ namespace Raitichan.AdvancedVRChatPictureSorter.Library.Manager {
 	/// <summary>
 	/// プラグインマネージャー
 	/// </summary>
-	internal class PluginManager {
+	public class PluginManager {
 
 		/// <summary>
 		/// Logger

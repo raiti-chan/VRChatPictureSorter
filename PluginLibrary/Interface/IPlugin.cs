@@ -1,7 +1,7 @@
 ﻿using System;
 
 namespace Raitichan.AdvancedVRChatPictureSorter.Library.Interface {
-	interface IPlugin {
+	public interface IPlugin {
 
 		/// <summary>
 		/// プラグイン名
