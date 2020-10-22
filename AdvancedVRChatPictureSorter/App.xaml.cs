@@ -1,8 +1,7 @@
-﻿using System.Windows;
+﻿using System.IO;
+using System.Windows;
 using AdvancedVRChatPictureSorter.Plugin;
 using NLog;
-using NLog.Config;
-using NLog.Targets;
 
 namespace AdvancedVRChatPictureSorter {
 	/// <summary>
@@ -17,7 +16,7 @@ namespace AdvancedVRChatPictureSorter {
 		/// <summary>
 		/// プラグインマネージャー
 		/// </summary>
-		private readonly PluginManager pluginManager = new PluginManager(); 
+		private readonly PluginManager pluginManager = new PluginManager();
 
 		/// <summary>
 		/// タスクトレイアイコン
@@ -29,6 +28,14 @@ namespace AdvancedVRChatPictureSorter {
 		/// </summary>
 		private void Initialize() {
 			logger.Info("Initialize application.");
+
+
+			DirectoryInfo pluginRootDirectory = new DirectoryInfo("./plugins");
+			if (!pluginRootDirectory.Exists) {
+				pluginRootDirectory.Create();
+			}
+			logger.Info("Plugin Root Path : {0}", pluginRootDirectory.FullName);
+			pluginManager.LoadPlugins(pluginRootDirectory);
 		}
 
 
@@ -42,6 +49,7 @@ namespace AdvancedVRChatPictureSorter {
 
 		private void ExitEvent(object sender, ExitEventArgs e) {
 			logger.Info("Finalze.");
+			this.pluginManager.Dispose();
 			this.notify.Dispose();
 		}
 

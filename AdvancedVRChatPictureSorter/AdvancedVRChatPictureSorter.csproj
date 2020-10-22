@@ -95,8 +95,9 @@
     <Compile Include="NotifycationWrapper.Designer.cs">
       <DependentUpon>NotifycationWrapper.cs</DependentUpon>
     </Compile>
-    <Compile Include="Lib\PluginInterface.cs" />
-    <Compile Include="PluginManager.cs" />
+    <Compile Include="Lib\IPluginInterface.cs" />
+    <Compile Include="Plugin\PluginManager.cs" />
+    <Compile Include="Plugin\Plugin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
