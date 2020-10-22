@@ -26,13 +26,5 @@ namespace Raitichan.AdvancedVRChatPictureSorter.Library.Manager {
 			this.PluginInterface = context;
 			this.PluginPath = path;
 		}
-
-		/// <summary>
-		/// プラグインを開放します。
-		/// </summary>
-		public void Dispose() {
-			this.PluginInterface.Dispose();
-		}
-
 	}
 }

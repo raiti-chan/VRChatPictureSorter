@@ -33,6 +33,10 @@ namespace Raitichan.AdvancedVRChatPictureSorter.Library.Manager {
 				logger.Info("Find Dll {0}", dll.FullName);
 				this.LoadPlugin(dll);
 			}
+
+			foreach (KeyValuePair<string, PluginEntry> pair in this.plugins) {
+				pair.Value.PluginInterface.Initialize();
+			}
 		}
 
 		/// <summary>
@@ -60,6 +64,8 @@ namespace Raitichan.AdvancedVRChatPictureSorter.Library.Manager {
 				return;
 			}
 
+			logger.Info("Loaded Plugin : {0}, {1}, {2}", plugin.PluginName, plugin.PluginVersion, plugin.PluginDesctiption);
+			plugin.PreInitialize();
 			PluginEntry pe = new PluginEntry(dllFile, plugin);
 			this.plugins.Add(plugin.PluginName, pe);
 		}
@@ -69,7 +75,7 @@ namespace Raitichan.AdvancedVRChatPictureSorter.Library.Manager {
 		/// </summary>
 		public void Dispose() {
 			foreach(KeyValuePair<string, PluginEntry> plugin in this.plugins) {
-				plugin.Value.Dispose();
+				plugin.Value.PluginInterface.Dispose();
 			}
 
 			this.plugins.Clear();
