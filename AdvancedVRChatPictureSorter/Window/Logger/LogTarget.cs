@@ -10,17 +10,20 @@ namespace Raitichan.AdvancedVRChatPictureSorter.Core.Window.Logger {
 	[Target("ConsoleWrapper")]
 	internal class LogTarget : TargetWithLayout {
 
+		private readonly LogStack stack;
+
 		/// <summary>
 		/// 初期化
 		/// </summary>
 		/// <param name="name">ターゲット名</param>
-		public LogTarget(string name) {
+		public LogTarget(string name, LogStack stack) {
 			this.Name = name;
+			this.stack = stack;
 		}
 
 
 		protected override void Write(LogEventInfo logEvent) {
-			// TODO: ログコンソールへ出力
+			this.stack.WriteLog(logEvent);
 		}
 
 	}
