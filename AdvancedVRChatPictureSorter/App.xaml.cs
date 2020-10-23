@@ -48,7 +48,7 @@ namespace Raitichan.AdvancedVRChatPictureSorter.Core {
 				// TODO: Logコンソールの表示
 				LoggingConfiguration conf = LogManager.Configuration;
 				LogTarget consoleTarget = new LogTarget("consoleWrapper", new LogStack());
-				conf.AddRule(LogLevel.Debug, LogLevel.Fatal, consoleTarget);
+				conf.AddRule(LogLevel.Trace, LogLevel.Fatal, consoleTarget);
 				LogManager.Configuration = conf;
 
 			}
