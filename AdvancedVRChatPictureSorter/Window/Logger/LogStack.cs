@@ -8,7 +8,7 @@ namespace Raitichan.AdvancedVRChatPictureSorter.Core.Window.Logger {
 	/// <summary>
 	/// ログ管理クラス
 	/// </summary>
-	internal class LogModel {
+	internal class LogStack {
 
 		
 
