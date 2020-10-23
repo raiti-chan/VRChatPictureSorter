@@ -8,13 +8,13 @@ namespace Raitichan.AdvancedVRChatPictureSorter.Core.Window.Logger {
 	/// コンソールウィンドウへ出力するターゲット
 	/// </summary>
 	[Target("ConsoleWrapper")]
-	internal class ConsoleTarget : TargetWithLayout {
+	internal class LogTarget : TargetWithLayout {
 
 		/// <summary>
 		/// 初期化
 		/// </summary>
 		/// <param name="name">ターゲット名</param>
-		public ConsoleTarget(string name) {
+		public LogTarget(string name) {
 			this.Name = name;
 		}
 
