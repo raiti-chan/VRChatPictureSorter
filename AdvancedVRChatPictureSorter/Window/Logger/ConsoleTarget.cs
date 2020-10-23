@@ -3,7 +3,7 @@ using NLog.Common;
 using NLog.Targets;
 using System;
 
-namespace Raitichan.AdvancedVRChatPictureSorter.Core {
+namespace Raitichan.AdvancedVRChatPictureSorter.Core.Window.Logger {
 	/// <summary>
 	/// コンソールウィンドウへ出力するターゲット
 	/// </summary>

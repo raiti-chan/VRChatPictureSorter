@@ -3,6 +3,7 @@ using System.Linq;
 using System.Windows;
 using NLog;
 using NLog.Config;
+using Raitichan.AdvancedVRChatPictureSorter.Core.Window.Logger;
 using Raitichan.AdvancedVRChatPictureSorter.Library.Manager;
 
 namespace Raitichan.AdvancedVRChatPictureSorter.Core {
