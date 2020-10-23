@@ -87,9 +87,9 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Window\Log\ConsoleTarget.cs" />
-    <Compile Include="Window\Log\LogElement.cs" />
-    <Compile Include="Window\Log\LogModel.cs" />
+    <Compile Include="Window\Logger\ConsoleTarget.cs" />
+    <Compile Include="Window\Logger\LogElement.cs" />
+    <Compile Include="Window\Logger\LogModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="NotifycationWrapper.cs">
