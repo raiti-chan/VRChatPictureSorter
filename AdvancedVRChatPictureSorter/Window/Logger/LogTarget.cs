@@ -1,7 +1,5 @@
 ﻿using NLog;
-using NLog.Common;
 using NLog.Targets;
-using System;
 
 namespace Raitichan.AdvancedVRChatPictureSorter.Core.Window.Logger {
 	/// <summary>
