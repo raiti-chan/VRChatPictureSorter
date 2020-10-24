@@ -90,6 +90,10 @@
     <Compile Include="Window\Logger\LogTarget.cs" />
     <Compile Include="Window\Logger\LogElement.cs" />
     <Compile Include="Window\Logger\LogStack.cs" />
+    <Compile Include="Window\Logger\LogViewModel.cs" />
+    <Compile Include="Window\Logger\LogWindow.xaml.cs">
+      <DependentUpon>LogWindow.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="NotifycationWrapper.cs">
@@ -150,6 +154,12 @@
       <Project>{0b0a1b0d-7357-4aff-94f7-bc90040c9eba}</Project>
       <Name>PluginLibrary</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Window\Logger\LogWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
