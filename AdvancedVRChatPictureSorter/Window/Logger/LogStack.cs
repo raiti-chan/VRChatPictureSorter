@@ -2,6 +2,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -30,6 +31,16 @@ namespace Raitichan.AdvancedVRChatPictureSorter.Core.Window.Logger {
 		/// <param name="info">ログinfo</param>
 		public void WriteLog(LogEventInfo info) {
 			this.logElements.Add(new LogElement(info));
+		}
+
+
+		/// <summary>
+		/// 読み取り専用でログリストを取得する。
+		/// </summary>
+		public ReadOnlyCollection<LogElement> LogElements {
+			get {
+				return this.logElements.AsReadOnly();
+			}
 		}
 
 	}
