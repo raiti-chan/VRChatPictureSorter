@@ -30,6 +30,11 @@ namespace Raitichan.AdvancedVRChatPictureSorter.Core {
 		private readonly PluginManager pluginManager = new PluginManager();
 
 		/// <summary>
+		/// ログスタック
+		/// </summary>
+		internal LogStack LogStack { private set; get; } = null;
+
+		/// <summary>
 		/// 初期化処理
 		/// </summary>
 		private void Initialize() {
