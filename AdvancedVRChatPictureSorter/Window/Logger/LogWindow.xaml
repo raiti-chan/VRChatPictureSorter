@@ -29,6 +29,7 @@
 			CanUserReorderColumns="False"
 			CanUserSortColumns="False"
 			CanUserResizeRows="False"
+			CanUserAddRows="False"
 			HeadersVisibility="Column"
 			SelectionMode="Single">
 			<DataGrid.Columns>
