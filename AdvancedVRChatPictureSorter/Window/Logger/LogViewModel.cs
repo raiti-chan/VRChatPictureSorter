@@ -11,7 +11,7 @@ namespace Raitichan.AdvancedVRChatPictureSorter.Core.Window.Logger {
 		/// <summary>
 		/// ログ情報
 		/// </summary>
-		public LogStack LogStack { get; set; }
+		public LogStack LogStack { get; } = App.CurrentApp.LogStack;
 
 		/// <summary>
 		/// ログリスト
