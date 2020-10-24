@@ -1,11 +1,9 @@
 ﻿using NLog;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Windows.Data;
+using System.Windows.Threading;
 
 namespace Raitichan.AdvancedVRChatPictureSorter.Core.Window.Logger {
 	/// <summary>
@@ -16,13 +14,13 @@ namespace Raitichan.AdvancedVRChatPictureSorter.Core.Window.Logger {
 		/// <summary>
 		/// ログ保存リスト
 		/// </summary>
-		private readonly List<LogElement> logElements;
+		private readonly ObservableCollection<LogElement> logElements;
 
 		/// <summary>
 		/// ログ保存リストの初期化
 		/// </summary>
 		public LogStack() {
-			this.logElements = new List<LogElement>(1000);
+			this.logElements = new ObservableCollection<LogElement>();
 		}
 
 		/// <summary>
@@ -37,9 +35,11 @@ namespace Raitichan.AdvancedVRChatPictureSorter.Core.Window.Logger {
 		/// <summary>
 		/// 読み取り専用でログリストを取得する。
 		/// </summary>
-		public ReadOnlyCollection<LogElement> LogElements {
+		public ReadOnlyObservableCollection<LogElement> ObservableLogElements {
 			get {
-				return this.logElements.AsReadOnly();
+				ReadOnlyObservableCollection<LogElement> elements = new ReadOnlyObservableCollection<LogElement>(logElements);
+				BindingOperations.EnableCollectionSynchronization(elements, new object());
+				return elements;
 			}
 		}
 
