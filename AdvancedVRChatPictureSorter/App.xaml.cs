@@ -55,7 +55,9 @@ namespace Raitichan.AdvancedVRChatPictureSorter.Core {
 			if (e != null && e.Args.Select(arg => arg.Equals("--debug-console")).Count() > 0) {
 				this.LogStack = new LogStack();
 
-				// TODO: Logコンソールの表示
+				LogWindow logWindow = new LogWindow();
+				logWindow.Show();
+
 				LoggingConfiguration conf = LogManager.Configuration;
 				LogTarget consoleTarget = new LogTarget("consoleWrapper", this.LogStack);
 				conf.AddRule(LogLevel.Trace, LogLevel.Fatal, consoleTarget);
