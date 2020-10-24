@@ -11,6 +11,9 @@ namespace Raitichan.AdvancedVRChatPictureSorter.Core {
 	/// App.xaml の相互作用ロジック
 	/// </summary>
 	public partial class App : Application {
+
+		public static App CurrentApp { get => Current as App; }
+
 		/// <summary>
 		/// Logger
 		/// </summary>
