@@ -31,6 +31,13 @@ namespace Raitichan.AdvancedVRChatPictureSorter.Core.Window.Logger {
 			this.logElements.Add(new LogElement(info));
 		}
 
+		/// <summary>
+		/// ログをクリアします。
+		/// </summary>
+		public void Clear() {
+			this.logElements.Clear();
+		}
+
 
 		/// <summary>
 		/// 読み取り専用でログリストを取得する。
