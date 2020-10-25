@@ -1,4 +1,5 @@
 ﻿using NLog;
+using Raitichan.AdvancedVRChatPictureSorter.Core.Window.Logger.Command;
 using Raitichan.AdvancedVRChatPictureSorter.Library.Util.NLog;
 using System;
 using System.Collections.ObjectModel;
@@ -28,6 +29,11 @@ namespace Raitichan.AdvancedVRChatPictureSorter.Core.Window.Logger {
 				return this.LogStack.ObservableLogElements;
 			}
 		}
+
+		/// <summary>
+		/// ログ削除コマンド
+		/// </summary>
+		public LogClearCommand LogClearCommand { get; } = new LogClearCommand();
 
 		/// <summary>
 		/// プロパティ変更通知イベント
