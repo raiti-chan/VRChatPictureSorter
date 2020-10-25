@@ -2,7 +2,7 @@
 using System.Windows;
 using System.Windows.Controls;
 
-namespace Raitichan.AdvancedVRChatPictureSorter.Core.Window.Logger.Command {
+namespace Raitichan.AdvancedVRChatPictureSorter.Core.Window.Logger {
 	/// <summary>
 	/// DataGridに要素が追加されたとき自動で一番したにスクロールするか否か。
 	/// </summary>

@@ -5,7 +5,6 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Raitichan.AdvancedVRChatPictureSorter.Core.Window.Logger"
-		xmlns:command="clr-namespace:Raitichan.AdvancedVRChatPictureSorter.Core.Window.Logger.Command"
         mc:Ignorable="d"
         Title="LogWindow" Height="600" Width="1000">
 	<Window.DataContext>
@@ -41,7 +40,7 @@
 			CanUserAddRows="False"
 			HeadersVisibility="Column"
 			SelectionMode="Single"
-			command:AutoScrollToEnd.Enable="{Binding ElementName=AutoScroll, Path=IsChecked}"
+			local:AutoScrollToEnd.Enable="{Binding ElementName=AutoScroll, Path=IsChecked}"
 			Grid.Row="1"
 			>
 			<DataGrid.Columns>
