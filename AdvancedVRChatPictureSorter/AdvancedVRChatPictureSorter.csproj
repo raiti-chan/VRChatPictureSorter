@@ -87,6 +87,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Window\Logger\Command\AutoScrollToEnd.cs" />
     <Compile Include="Window\Logger\LogTarget.cs" />
     <Compile Include="Window\Logger\LogElement.cs" />
     <Compile Include="Window\Logger\LogStack.cs" />
