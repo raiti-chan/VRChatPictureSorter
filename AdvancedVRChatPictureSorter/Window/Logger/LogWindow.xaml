@@ -23,11 +23,15 @@
 	</Window.Resources>
 	<Grid>
 		<Grid.RowDefinitions>
-			<RowDefinition Height="35"/>
+			<RowDefinition Height="40"/>
 			<RowDefinition/>
 		</Grid.RowDefinitions>
 
 		<CheckBox x:Name="AutoScroll" Content="AutoScroll" HorizontalAlignment="Left" Margin="10,10,0,10"/>
+
+
+		<Button Content="Clear" HorizontalAlignment="Left" Margin="90,10,0,10" Width="75" Command="{Binding LogClearCommand}"/>
+
 		<DataGrid 
 			Name="LogGrid"
 			Margin="0,0,0,0"
@@ -56,5 +60,6 @@
 				</Style>
 			</DataGrid.ItemContainerStyle>
 		</DataGrid>
+		
 	</Grid>
 </Window>
