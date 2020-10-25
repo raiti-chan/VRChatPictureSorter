@@ -1,9 +1,6 @@
 ﻿using NLog;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows.Data;
-using System.Windows.Threading;
 
 namespace Raitichan.AdvancedVRChatPictureSorter.Core.Window.Logger {
 	/// <summary>
