@@ -63,7 +63,6 @@ namespace Raitichan.AdvancedVRChatPictureSorter.Core.Window.Logger.Command {
 
 		private static void EnablePropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e) {
 			if (!(d is DataGrid dataGrid)) return;
-			if (!(dataGrid.ItemsSource is INotifyCollectionChanged collection)) return;
 			bool enable = (bool)e.NewValue;
 
 			CollectionUpdateHandler handler = GetHandler(dataGrid);
