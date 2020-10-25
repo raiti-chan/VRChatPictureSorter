@@ -36,10 +36,99 @@ namespace Raitichan.AdvancedVRChatPictureSorter.Core.Window.Logger {
 		public LogClearCommand LogClearCommand { get; } = new LogClearCommand();
 
 		/// <summary>
+		/// <see cref="IsFiltedTrace"/>
+		/// </summary>
+		private bool isFiltedTrace = false;
+		/// <summary>
+		/// リストのTraceのフィルタ状態
+		/// </summary>
+		public bool IsFiltedTrace { 
+			get => this.isFiltedTrace;
+			set {
+				this.isFiltedTrace = value;
+				this.RaisePropertyChanged();
+			} 
+		}
+
+		/// <summary>
+		/// <see cref="IsFiltedDebug"/>
+		/// </summary>
+		private bool isFiltedDebug = false;
+		/// <summary>
+		/// リストのDebugのフィルタ状態
+		/// </summary>
+		public bool IsFiltedDebug {
+			get => this.isFiltedDebug;
+			set {
+				this.isFiltedDebug = value;
+				this.RaisePropertyChanged();
+			}
+		}
+
+		/// <summary>
+		/// <see cref="IsFiltedInfo"/>
+		/// </summary>
+		private bool isFiltedInfo = false;
+		/// <summary>
+		/// リストのInfoのフィルタ状態
+		/// </summary>
+		public bool IsFiltedInfo {
+			get => this.isFiltedInfo;
+			set {
+				this.isFiltedInfo = value;
+				this.RaisePropertyChanged();
+			}
+		}
+
+		/// <summary>
+		/// <see cref="IsFiltedWarn"/>
+		/// </summary>
+		private bool isFiltedWarn = false;
+		/// <summary>
+		/// リストのWarnのフィルタ状態
+		/// </summary>
+		public bool IsFiltedWarn {
+			get => this.isFiltedWarn;
+			set {
+				this.isFiltedWarn = value;
+				this.RaisePropertyChanged();
+			}
+		}
+
+		/// <summary>
+		/// <see cref="IsFiltedError"/>
+		/// </summary>
+		private bool isFiltedError = false;
+		/// <summary>
+		/// リストのErrorのフィルタ状態
+		/// </summary>
+		public bool IsFiltedError {
+			get => this.isFiltedError;
+			set {
+				this.isFiltedError = value;
+				this.RaisePropertyChanged();
+			}
+		}
+
+		/// <summary>
+		/// <see cref="IsFiltedFatal/>
+		/// </summary>
+		private bool isFiltedFatal = false;
+		/// <summary>
+		/// リストのFatalのフィルタ状態
+		/// </summary>
+		public bool IsFiltedFatal {
+			get => this.isFiltedFatal;
+			set {
+				this.isFiltedFatal = value;
+				this.RaisePropertyChanged();
+			}
+		}
+
+		/// <summary>
 		/// プロパティ変更通知イベント
 		/// </summary>
 		public event PropertyChangedEventHandler PropertyChanged;
-
 
 		/// <summary>
 		/// プロパティの変更の通知
