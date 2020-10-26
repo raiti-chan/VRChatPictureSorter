@@ -25,8 +25,55 @@ namespace Raitichan.AdvancedVRChatPictureSorter.Core.Window.Logger {
 		/// </summary>
 		public ReadOnlyObservableCollection<LogElement> LogElements {
 			get {
-				if (LogStack == null) return null;
-				return this.LogStack.ObservableLogElements;
+				if (this.LogStack == null) return null;
+				ReadOnlyObservableCollection<LogElement> elements = this.LogStack.ObservableLogElements;
+				return elements;
+			}
+		}
+
+		/// <summary>
+		/// <see cref="FilterUpdateCommand"/>
+		/// </summary>
+		private FilterUpdateCommand filterUpdateCommand;
+
+		/// <summary>
+		/// フィルター更新コマンド
+		/// </summary>
+		public FilterUpdateCommand FilterUpdateCommand {
+			get {
+				if (this.filterUpdateCommand == null) {
+					this.filterUpdateCommand = new FilterUpdateCommand(this.LogFilterFunction);
+				}
+
+				return this.filterUpdateCommand;
+			}
+		}
+
+		/// <summary>
+		/// <
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		private bool LogFilterFunction(object element) {
+			if (!(element is LogElement logElement)) {
+				return false;
+			}
+
+			switch(logElement.Level.ToEnum()) {
+				case LogLevelEnum.Trace:
+					return !this.IsFiltedTrace;
+				case LogLevelEnum.Debug:
+					return !this.IsFiltedDebug;
+				case LogLevelEnum.Info:
+					return !this.IsFiltedInfo;
+				case LogLevelEnum.Warn:
+					return !this.IsFiltedWarn;
+				case LogLevelEnum.Error:
+					return !this.IsFiltedError;
+				case LogLevelEnum.Fatal:
+					return !this.IsFiltedFatal;
+				default:
+					return true;
 			}
 		}
 
