@@ -88,6 +88,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Window\Logger\AutoScrollToEnd.cs" />
+    <Compile Include="Window\Logger\Command\FilterUpdateCommand.cs" />
     <Compile Include="Window\Logger\Command\LogClearCommand.cs" />
     <Compile Include="Window\Logger\LogTarget.cs" />
     <Compile Include="Window\Logger\LogElement.cs" />
