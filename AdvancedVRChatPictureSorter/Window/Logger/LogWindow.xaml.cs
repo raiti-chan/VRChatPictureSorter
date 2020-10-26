@@ -1,7 +1,4 @@
-﻿using System.Windows.Controls;
-using System.Windows.Media;
-
-namespace Raitichan.AdvancedVRChatPictureSorter.Core.Window.Logger {
+﻿namespace Raitichan.AdvancedVRChatPictureSorter.Core.Window.Logger {
 	/// <summary>
 	/// LogWindow.xaml の相互作用ロジック
 	/// </summary>
