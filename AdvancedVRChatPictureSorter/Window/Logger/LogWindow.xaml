@@ -20,6 +20,8 @@
 			WarnBrush="Gold"
 			ErrorBrush="LightPink"
 			FatalBrush="Red"/>
+
+		<CollectionViewSource x:Key="LogElementSource" Source="{Binding LogElements}" />
 	</Window.Resources>
 	<Grid>
 		<Grid.RowDefinitions>
@@ -33,18 +35,18 @@
 		
 		<Label Content="Filter : " Margin="0,7,490,7" HorizontalAlignment="Right" Width="45"/>
 
-		<ToggleButton Content="Trace" Margin="0,10,410,10" HorizontalAlignment="Right" Width="75" IsChecked="{Binding IsFiltedTrace}" Background="Beige"/>
-		<ToggleButton Content="Debug" Margin="0,10,330,10" HorizontalAlignment="Right" Width="75" IsChecked="{Binding IsFiltedDebug}" Background="Aquamarine"/>
-		<ToggleButton Content="Info" Margin="0,10,250,10" HorizontalAlignment="Right" Width="75" IsChecked="{Binding IsFiltedInfo}" Background="AliceBlue"/>
-		<ToggleButton Content="Warn" Margin="0,10,170,10" HorizontalAlignment="Right" Width="75" IsChecked="{Binding IsFiltedWarn}" Background="Gold"/>
-		<ToggleButton Content="Error" Margin="0,10,90,10" HorizontalAlignment="Right" Width="75" IsChecked="{Binding IsFiltedError}" Background="LightPink"/>
-		<ToggleButton Content="Fatal" Margin="0,10,10,10" HorizontalAlignment="Right" Width="75" IsChecked="{Binding IsFiltedFatal}" Background="Red"/>
+		<ToggleButton Content="Trace" Margin="0,10,410,10" HorizontalAlignment="Right" Width="75" IsChecked="{Binding IsFiltedTrace}" Background="Beige" Command="{Binding FilterUpdateCommand}" CommandParameter="{Binding Source={StaticResource LogElementSource}}"/>
+		<ToggleButton Content="Debug" Margin="0,10,330,10" HorizontalAlignment="Right" Width="75" IsChecked="{Binding IsFiltedDebug}" Background="Aquamarine" Command="{Binding FilterUpdateCommand}" CommandParameter="{Binding Source={StaticResource LogElementSource}}"/>
+		<ToggleButton Content="Info" Margin="0,10,250,10" HorizontalAlignment="Right" Width="75" IsChecked="{Binding IsFiltedInfo}" Background="AliceBlue" Command="{Binding FilterUpdateCommand}" CommandParameter="{Binding Source={StaticResource LogElementSource}}"/>
+		<ToggleButton Content="Warn" Margin="0,10,170,10" HorizontalAlignment="Right" Width="75" IsChecked="{Binding IsFiltedWarn}" Background="Gold" Command="{Binding FilterUpdateCommand}" CommandParameter="{Binding Source={StaticResource LogElementSource}}"/>
+		<ToggleButton Content="Error" Margin="0,10,90,10" HorizontalAlignment="Right" Width="75" IsChecked="{Binding IsFiltedError}" Background="LightPink" Command="{Binding FilterUpdateCommand}" CommandParameter="{Binding Source={StaticResource LogElementSource}}"/>
+		<ToggleButton Content="Fatal" Margin="0,10,10,10" HorizontalAlignment="Right" Width="75" IsChecked="{Binding IsFiltedFatal}" Background="Red" Command="{Binding FilterUpdateCommand}" CommandParameter="{Binding Source={StaticResource LogElementSource}}"/>
 
 
 		<DataGrid 
 			Name="LogGrid"
 			Margin="0,0,0,0"
-			ItemsSource="{Binding LogElements}"
+			ItemsSource="{Binding Source={StaticResource LogElementSource}}"
 			AutoGenerateColumns="False"
 			IsReadOnly="True"
 			CanUserReorderColumns="False"
