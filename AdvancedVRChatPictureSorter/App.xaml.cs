@@ -12,7 +12,7 @@ namespace Raitichan.AdvancedVRChatPictureSorter.Core {
 	/// </summary>
 	internal partial class App : Application {
 
-		public static App CurrentApp { get => Current as App; }
+		public static App CurrentApp => Current as App;
 
 		/// <summary>
 		/// Logger
