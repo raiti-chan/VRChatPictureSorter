@@ -1,8 +1,10 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Linq;
 using System.Windows;
 using NLog;
 using NLog.Config;
+using Raitichan.AdvancedVRChatPictureSorter.Core.Window.FatalExceptionDialog;
 using Raitichan.AdvancedVRChatPictureSorter.Core.Window.Logger;
 using Raitichan.AdvancedVRChatPictureSorter.Library.Manager;
 
@@ -64,6 +66,9 @@ namespace Raitichan.AdvancedVRChatPictureSorter.Core {
 				LogManager.Configuration = conf;
 
 			}
+
+			AppDomain.CurrentDomain.UnhandledException += UnhandledException;
+
 			logger.Info("Start application.");
 
 			this.ShutdownMode = ShutdownMode.OnExplicitShutdown;
@@ -75,6 +80,17 @@ namespace Raitichan.AdvancedVRChatPictureSorter.Core {
 			logger.Info("Finalze.");
 			this.pluginManager.Dispose();
 			this.notify.Dispose();
+		}
+
+		/// <summary>
+		/// ハンドルされていない例外。
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		private void UnhandledException(object sender, UnhandledExceptionEventArgs e) {
+			logger.Fatal("Fatal Exception!!\nException was not catched.\n{0}", e.ExceptionObject.ToString());
+			new FatalExceptionDialog(e.ExceptionObject as Exception).ShowDialog();
+
 		}
 
 	}
