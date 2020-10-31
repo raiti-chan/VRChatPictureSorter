@@ -88,6 +88,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Window\FatalExceptionDialog\ExceptionViewModel.cs" />
+    <Compile Include="Window\FatalExceptionDialog\FatalExceptionDialog.xaml.cs">
+      <DependentUpon>FatalExceptionDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Window\Logger\AutoScrollToEnd.cs" />
     <Compile Include="Window\Logger\Command\FilterUpdateCommand.cs" />
     <Compile Include="Window\Logger\Command\LogClearCommand.cs" />
@@ -160,10 +163,15 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Window\FatalExceptionDialog\FatalExceptionDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Window\Logger\LogWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
