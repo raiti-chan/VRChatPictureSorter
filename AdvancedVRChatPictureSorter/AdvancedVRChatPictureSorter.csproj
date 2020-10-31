@@ -87,6 +87,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Window\FatalExceptionDialog\ExceptionViewModel.cs" />
     <Compile Include="Window\Logger\AutoScrollToEnd.cs" />
     <Compile Include="Window\Logger\Command\FilterUpdateCommand.cs" />
     <Compile Include="Window\Logger\Command\LogClearCommand.cs" />
