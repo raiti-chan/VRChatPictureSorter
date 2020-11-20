@@ -1,0 +1,76 @@
+﻿<Window x:Class="Raitichan.AdvancedVRChatPictureSorter.Core.Window.Logger.LogWindow"
+		x:ClassModifier="internal"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Raitichan.AdvancedVRChatPictureSorter.Core.Window.Logger"
+        mc:Ignorable="d"
+        Title="LogWindow" Height="600" Width="1000">
+	<Window.DataContext>
+		<local:LogViewModel />
+	</Window.DataContext>
+	<Window.Resources>
+		<local:LogElementRowColorConverter 
+			x:Key="LogElementRowColorConverter"
+			DefaultBrush="White"
+			TraceBrush="Beige"
+			DebugBrush="Aquamarine"
+			InfoBrush="AliceBlue"
+			WarnBrush="Gold"
+			ErrorBrush="LightPink"
+			FatalBrush="Red"/>
+
+		<CollectionViewSource x:Key="LogElementSource" Source="{Binding LogElements}" />
+	</Window.Resources>
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="40"/>
+			<RowDefinition/>
+		</Grid.RowDefinitions>
+
+		<CheckBox x:Name="AutoScroll" Content="AutoScroll" HorizontalAlignment="Left" Margin="10,10,0,10"/>
+
+		<Button Content="Clear" HorizontalAlignment="Left" Margin="90,10,0,10" Width="75" Command="{Binding LogClearCommand}"/>
+		
+		<Label Content="Filter : " Margin="0,7,490,7" HorizontalAlignment="Right" Width="45"/>
+
+		<ToggleButton Content="Trace" Margin="0,10,410,10" HorizontalAlignment="Right" Width="75" IsChecked="{Binding IsFiltedTrace}" Background="Beige" Command="{Binding FilterUpdateCommand}" CommandParameter="{Binding Source={StaticResource LogElementSource}}"/>
+		<ToggleButton Content="Debug" Margin="0,10,330,10" HorizontalAlignment="Right" Width="75" IsChecked="{Binding IsFiltedDebug}" Background="Aquamarine" Command="{Binding FilterUpdateCommand}" CommandParameter="{Binding Source={StaticResource LogElementSource}}"/>
+		<ToggleButton Content="Info" Margin="0,10,250,10" HorizontalAlignment="Right" Width="75" IsChecked="{Binding IsFiltedInfo}" Background="AliceBlue" Command="{Binding FilterUpdateCommand}" CommandParameter="{Binding Source={StaticResource LogElementSource}}"/>
+		<ToggleButton Content="Warn" Margin="0,10,170,10" HorizontalAlignment="Right" Width="75" IsChecked="{Binding IsFiltedWarn}" Background="Gold" Command="{Binding FilterUpdateCommand}" CommandParameter="{Binding Source={StaticResource LogElementSource}}"/>
+		<ToggleButton Content="Error" Margin="0,10,90,10" HorizontalAlignment="Right" Width="75" IsChecked="{Binding IsFiltedError}" Background="LightPink" Command="{Binding FilterUpdateCommand}" CommandParameter="{Binding Source={StaticResource LogElementSource}}"/>
+		<ToggleButton Content="Fatal" Margin="0,10,10,10" HorizontalAlignment="Right" Width="75" IsChecked="{Binding IsFiltedFatal}" Background="Red" Command="{Binding FilterUpdateCommand}" CommandParameter="{Binding Source={StaticResource LogElementSource}}"/>
+
+
+		<DataGrid 
+			Name="LogGrid"
+			Margin="0,0,0,0"
+			ItemsSource="{Binding Source={StaticResource LogElementSource}}"
+			AutoGenerateColumns="False"
+			IsReadOnly="True"
+			CanUserReorderColumns="False"
+			CanUserSortColumns="False"
+			CanUserResizeRows="False"
+			CanUserAddRows="False"
+			HeadersVisibility="Column"
+			SelectionMode="Single"
+			local:AutoScrollToEnd.Enable="{Binding ElementName=AutoScroll, Path=IsChecked}"
+			Grid.Row="1"
+			>
+			<DataGrid.Columns>
+				<DataGridTextColumn Header="ID" Binding="{Binding Id}"/>
+				<DataGridTextColumn Header="Time" Binding="{Binding Time}" />
+				<DataGridTextColumn Header="Level" Binding="{Binding Level}" />
+				<DataGridTextColumn Header="Class" Binding="{Binding LoggerName}" />
+				<DataGridTextColumn Header="Message" Binding="{Binding Message}"/>
+			</DataGrid.Columns>
+			<DataGrid.ItemContainerStyle>
+				<Style TargetType="DataGridRow">
+					<Setter Property="Background" Value="{Binding Level, Converter={StaticResource LogElementRowColorConverter}}"/>
+				</Style>
+			</DataGrid.ItemContainerStyle>
+		</DataGrid>
+
+	</Grid>
+</Window>

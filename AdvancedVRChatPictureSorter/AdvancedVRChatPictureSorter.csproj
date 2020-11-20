@@ -87,6 +87,20 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Window\FatalExceptionDialog\ExceptionViewModel.cs" />
+    <Compile Include="Window\FatalExceptionDialog\FatalExceptionDialog.xaml.cs">
+      <DependentUpon>FatalExceptionDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Window\Logger\AutoScrollToEnd.cs" />
+    <Compile Include="Window\Logger\Command\FilterUpdateCommand.cs" />
+    <Compile Include="Window\Logger\Command\LogClearCommand.cs" />
+    <Compile Include="Window\Logger\LogTarget.cs" />
+    <Compile Include="Window\Logger\LogElement.cs" />
+    <Compile Include="Window\Logger\LogStack.cs" />
+    <Compile Include="Window\Logger\LogViewModel.cs" />
+    <Compile Include="Window\Logger\LogWindow.xaml.cs">
+      <DependentUpon>LogWindow.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="NotifycationWrapper.cs">
@@ -148,5 +162,16 @@
       <Name>PluginLibrary</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <Page Include="Window\FatalExceptionDialog\FatalExceptionDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Window\Logger\LogWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,13 +1,21 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
+using System.Linq;
 using System.Windows;
 using NLog;
+using NLog.Config;
+using Raitichan.AdvancedVRChatPictureSorter.Core.Window.FatalExceptionDialog;
+using Raitichan.AdvancedVRChatPictureSorter.Core.Window.Logger;
 using Raitichan.AdvancedVRChatPictureSorter.Library.Manager;
 
 namespace Raitichan.AdvancedVRChatPictureSorter.Core {
 	/// <summary>
 	/// App.xaml の相互作用ロジック
 	/// </summary>
-	public partial class App : Application {
+	internal partial class App : Application {
+
+		public static App CurrentApp => Current as App;
+
 		/// <summary>
 		/// Logger
 		/// </summary>
@@ -22,6 +30,11 @@ namespace Raitichan.AdvancedVRChatPictureSorter.Core {
 		/// プラグインマネージャー
 		/// </summary>
 		private readonly PluginManager pluginManager = new PluginManager();
+
+		/// <summary>
+		/// ログスタック
+		/// </summary>
+		internal LogStack LogStack { private set; get; } = null;
 
 		/// <summary>
 		/// 初期化処理
@@ -41,6 +54,21 @@ namespace Raitichan.AdvancedVRChatPictureSorter.Core {
 
 
 		private void StartEvent(object sender, StartupEventArgs e) {
+			if (e != null && e.Args.Select(arg => arg.Equals("--debug-console")).Count() > 0) {
+				this.LogStack = new LogStack();
+
+				LogWindow logWindow = new LogWindow();
+				logWindow.Show();
+
+				LoggingConfiguration conf = LogManager.Configuration;
+				LogTarget consoleTarget = new LogTarget("consoleWrapper", this.LogStack);
+				conf.AddRule(LogLevel.Trace, LogLevel.Fatal, consoleTarget);
+				LogManager.Configuration = conf;
+
+			}
+
+			AppDomain.CurrentDomain.UnhandledException += this.UnhandledException;
+
 			logger.Info("Start application.");
 
 			this.ShutdownMode = ShutdownMode.OnExplicitShutdown;
@@ -52,6 +80,17 @@ namespace Raitichan.AdvancedVRChatPictureSorter.Core {
 			logger.Info("Finalze.");
 			this.pluginManager.Dispose();
 			this.notify.Dispose();
+		}
+
+		/// <summary>
+		/// ハンドルされていない例外。
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		private void UnhandledException(object sender, UnhandledExceptionEventArgs e) {
+			logger.Fatal("Fatal Exception!!\nException was not catched.\n{0}", e.ExceptionObject.ToString());
+			new FatalExceptionDialog(e.ExceptionObject as Exception).ShowDialog();
+
 		}
 
 	}
