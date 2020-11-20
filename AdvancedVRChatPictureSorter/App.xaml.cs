@@ -67,7 +67,7 @@ namespace Raitichan.AdvancedVRChatPictureSorter.Core {
 
 			}
 
-			AppDomain.CurrentDomain.UnhandledException += UnhandledException;
+			AppDomain.CurrentDomain.UnhandledException += this.UnhandledException;
 
 			logger.Info("Start application.");
 
