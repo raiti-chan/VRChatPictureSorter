@@ -87,6 +87,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Module\CoreModule.cs" />
     <Compile Include="Window\FatalExceptionDialog\ExceptionViewModel.cs" />
     <Compile Include="Window\FatalExceptionDialog\FatalExceptionDialog.xaml.cs">
       <DependentUpon>FatalExceptionDialog.xaml</DependentUpon>
