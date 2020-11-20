@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Reflection;
 using NLog;
 using Raitichan.AdvancedVRChatPictureSorter.Library.Interface;
+using Raitichan.AdvancedVRChatPictureSorter.Library.Module;
 
 namespace Raitichan.AdvancedVRChatPictureSorter.Library.Manager {
 	/// <summary>
@@ -22,6 +23,19 @@ namespace Raitichan.AdvancedVRChatPictureSorter.Library.Manager {
 		/// </summary>
 		private readonly Dictionary<string, PluginEntry> plugins = new Dictionary<string, PluginEntry>();
 
+		/// <summary>
+		/// コアモジュール
+		/// </summary>
+		private readonly ICoreModule module;
+
+		/// <summary>
+		/// コアモジュールを渡して初期化
+		/// </summary>
+		/// <param name="coreModule"></param>
+		public PluginManager(ICoreModule coreModule) {
+			this.module = coreModule;
+		}
+
 
 		/// <summary>
 		/// 指定されたディレクトリからプラグインを読み込む
@@ -35,7 +49,7 @@ namespace Raitichan.AdvancedVRChatPictureSorter.Library.Manager {
 			}
 
 			foreach (KeyValuePair<string, PluginEntry> pair in this.plugins) {
-				pair.Value.PluginInterface.Initialize();
+				pair.Value.PluginInterface.Initialize(this.module);
 			}
 		}
 
