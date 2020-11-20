@@ -25,7 +25,7 @@ namespace Raitichan.AdvancedVRChatPictureSorter.Core {
 		/// <summary>
 		/// タスクトレイアイコン
 		/// </summary>
-		private NotifycationWrapper notify = null;
+		public NotifycationWrapper Notifycation { private set; get; } = null;
 
 
 		/// <summary>
@@ -36,7 +36,7 @@ namespace Raitichan.AdvancedVRChatPictureSorter.Core {
 		/// <summary>
 		/// ログスタック
 		/// </summary>
-		internal LogStack LogStack { private set; get; } = null;
+		public LogStack LogStack { private set; get; } = null;
 
 		/// <summary>
 		/// 初期化処理
@@ -52,6 +52,8 @@ namespace Raitichan.AdvancedVRChatPictureSorter.Core {
 			logger.Info("Plugin Root Path : {0}", pluginRootDirectory.FullName);
 
 			this.pluginManager.LoadPlugins(pluginRootDirectory);
+			CoreModule.Instance.Initialize();
+			this.pluginManager.PluginInit();
 		}
 
 
@@ -74,14 +76,14 @@ namespace Raitichan.AdvancedVRChatPictureSorter.Core {
 			logger.Info("Start application.");
 
 			this.ShutdownMode = ShutdownMode.OnExplicitShutdown;
-			this.notify = new NotifycationWrapper();
+			this.Notifycation = new NotifycationWrapper();
 			this.Initialize();
 		}
 
 		private void ExitEvent(object sender, ExitEventArgs e) {
 			logger.Info("Finalze.");
 			this.pluginManager.Dispose();
-			this.notify.Dispose();
+			this.Notifycation.Dispose();
 		}
 
 		/// <summary>
