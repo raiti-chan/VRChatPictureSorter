@@ -54,6 +54,7 @@
     <Compile Include="Manager\PluginManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Util\NLog\LogLevelEnum.cs" />
+	<Compile Include="Module\CoreModule.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
