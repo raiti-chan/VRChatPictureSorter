@@ -47,7 +47,13 @@ namespace Raitichan.AdvancedVRChatPictureSorter.Library.Manager {
 				logger.Info("Find Dll {0}", dll.FullName);
 				this.LoadPlugin(dll);
 			}
+		}
 
+		/// <summary>
+		/// プラグインの初期化を行います。
+		/// </summary>
+		public void PluginInit() {
+			logger.Info("Plugin Initializing.");
 			foreach (KeyValuePair<string, PluginEntry> pair in this.plugins) {
 				pair.Value.PluginInterface.Initialize(this.module);
 			}
